@@ -22,7 +22,7 @@ include 	"arch/amd64/conf/std.amd64"
 
 options 	INCLUDE_CONFIG_FILE	# embed config file in kernel binary
 
-#ident		"yenn-OS 0.0-Alpha"
+ident		"yenn-OS 0.0-Alpha"
 
 maxusers	64		# estimated number of users
 
@@ -1247,5 +1247,3 @@ options 	PAX_ASLR_DEBUG=1	# PaX ASLR debug
 
 # Pull in optional local configuration - always at end
 cinclude	"arch/amd64/conf/GENERIC.local"
-
-include 	"yenn-os-ident"

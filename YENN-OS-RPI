@@ -408,5 +408,4 @@ pseudo-device btuart
 pseudo-device bcsp
 pseudo-device bthfive
 
-# yenn-OS ident
-include	"yenn-os-ident"
+ident	"yenn-OS 0.0-Alpha"
