@@ -1,0 +1,9 @@
+#! /bin/sh
+
+. ./yenn-os.conf
+
+echo "Making archive..."
+
+tar vcJpf ${SCRATCH}/yenn-os-${BASESYSTEM}-${CPUARCH}-${MACHARCH}-binary.txz ${SCRATCH}/yenn-os-${BASESYSTEM}-${CPUARCH}-${MACHARCH}/obj/sys/arch/evbarm/compile/${KERNCONF}/ ${SCRATCH}/yenn-os-${BASESYSTEM}-${CPUARCH}-${MACHARCH}/release/ ${BASEDIR}/src/external/broadcom/rpi-firmware/dist/
+
+exit $?

@@ -1,0 +1,245 @@
+{
+
+#######################
+
+OWN=/usr/sbin/chown
+GRP=/usr/bin/chgrp
+MOD=/bin/chmod
+RM=/bin/rm
+# fix milter-greylist owner
+$OWN postfix:postfix /var/milter-greylist
+# bug?
+#XXXnot needed anymore?#$MOD 4555 /usr/bin/passwd
+# security
+$MOD o-rx /usr/bin/su
+$GRP wheel /usr/bin/su
+#$MOD o-rx /sbin/sysctl
+$MOD o-rx /sbin/ifconfig
+#$MOD o-rx /usr/bin/modstat
+#$MOD o-rx /usr/bin/netstat
+#$MOD o-rx /usr/bin/pmap
+#$MOD o-rx /usr/bin/sysstat
+#$MOD o-rx /usr/bin/systat
+#$MOD o-rx /usr/bin/vmstat
+#$MOD o-rx /usr/sbin/pstat
+$MOD o-rx /sbin/route
+$MOD o-rx /sbin/reboot
+$MOD o-rx /sbin/shutdown
+$MOD o-rx /sbin/mount*
+$MOD o-rx /sbin/umount
+$MOD o-rx /usr/sbin/authpf
+$MOD o-rx /usr/bin/wall
+# no IP peeking
+$MOD o-r /var/run/utmp*
+$MOD o-r /var/account/acct*
+$MOD o-rx /usr/bin/send-pr
+$GRP meta /usr/bin/send-pr
+# XXX do not enable below
+#$MOD o-rx /usr/bin/w
+#$GRP meta /usr/bin/w
+#$MOD o-rx /usr/bin/who
+#$GRP meta /usr/bin/who
+#$MOD o-rx /usr/bin/last
+#$GRP meta /usr/bin/last
+$MOD o-rx /usr/bin/lastcomm
+$MOD o-rx /usr/sbin/lastlogin
+#$GRP meta /usr/sbin/lastlogin
+$MOD go-rx /etc/rc.conf
+$MOD go-rx /etc/signatures
+$MOD go-rx /etc/ipf.conf
+$MOD go-rx /etc/ipf6.conf
+$MOD go-rx /etc/ipnat.conf
+$MOD go-rx /etc/altq.conf
+#XXX$MOD o-rx /etc/passwd
+$MOD go-rx /etc/fstab
+$MOD go-rx /etc/pf.conf
+$MOD go-rx /etc/pf.os
+$MOD go-rx /etc/npf.conf
+$MOD go-rx /etc/ifconfig.*
+$MOD go-rx /etc/inetd.conf
+$MOD go-rx /etc/dhcpd.conf
+$MOD go-rx /usr/sbin/arp
+$MOD o-rx /sbin/dmesg
+$MOD o-r /var/run/dmesg.boot
+# access for meta
+$MOD o-rx /usr/bin/crontab
+$GRP meta /usr/bin/crontab
+$MOD o-rx /usr/bin/at
+$GRP meta /usr/bin/at
+$MOD o-rx /usr/bin/atq
+$GRP meta /usr/bin/atq
+$MOD o-rx /usr/bin/atrm
+$GRP meta /usr/bin/atrm
+$MOD o-rx /usr/bin/batch
+$GRP meta /usr/bin/batch
+$MOD o-rx /usr/bin/cc
+$GRP meta /usr/bin/cc
+$MOD o-rx /usr/bin/gcc
+$GRP meta /usr/bin/gcc
+$MOD o-rx /usr/bin/c++
+$GRP meta /usr/bin/c++
+$MOD o-rx /usr/bin/g++
+$GRP meta /usr/bin/g++
+$MOD o-rx /usr/bin/find
+$GRP meta /usr/bin/find
+$MOD o-rx /sbin/ping
+$GRP meta /sbin/ping
+$MOD o-rx /sbin/ping6
+$GRP meta /sbin/ping6
+$MOD o-rx /usr/sbin/traceroute
+$GRP meta /usr/sbin/traceroute
+$MOD o-rx /usr/sbin/traceroute6
+$GRP meta /usr/sbin/traceroute6
+# tmux
+$GRP bground /usr/bin/tmux
+$MOD o-rx /usr/bin/tmux
+# pkg
+$GRP bground /usr/pkg/bin/screen-*
+$MOD o-rx /usr/pkg/bin/screen-*
+$MOD -s /usr/pkg/bin/screen-*
+$GRP ircusers /usr/pkg/bin/tmux
+$MOD o-rx /usr/pkg/bin/tmux
+$GRP foo /usr/pkg/bin/nikto
+$MOD o-rx /usr/pkg/bin/nikto
+$GRP meta /usr/pkg/bin/ncat
+$MOD o-rx /usr/pkg/bin/ncat
+$GRP meta /usr/pkg/bin/nping
+$MOD o-rx /usr/pkg/bin/nping
+$GRP foo /usr/pkg/bin/nmap
+$MOD o-rx /usr/pkg/bin/nmap
+$GRP meta /usr/pkg/gcc34
+$MOD o-rx /usr/pkg/gcc34
+$GRP ircusers /usr/pkg/bin/irssi
+$MOD o-rx /usr/pkg/bin/irssi
+$GRP ircusers /usr/pkg/bin/BitchX-*
+$MOD o-rx /usr/pkg/bin/BitchX-*
+$GRP ircusers /usr/pkg/bin/scr-bx
+$MOD o-rx /usr/pkg/bin/scr-bx
+$GRP ircusers /usr/pkg/bin/bnc
+$MOD o-rx /usr/pkg/bin/bnc
+$GRP ircusers /usr/pkg/bin/dircproxy
+$MOD o-rx /usr/pkg/bin/dircproxy
+$GRP meta /usr/pkg/bin/eggdrop
+$MOD o-rx /usr/pkg/bin/eggdrop
+$GRP ircusers /usr/pkg/bin/epic-EPIC4-*
+$MOD o-rx /usr/pkg/bin/epic-EPIC4-*
+$GRP ircusers /usr/pkg/bin/epic5-*
+$MOD o-rx /usr/pkg/bin/epic5-*
+$GRP ircusers /usr/pkg/bin/irc-*
+$MOD o-rx /usr/pkg/bin/irc-*
+$GRP ircusers /usr/pkg/bin/ninja-*
+$MOD o-rx /usr/pkg/bin/ninja-*
+$GRP ircusers /usr/pkg/bin/tirc
+$MOD o-rx /usr/pkg/bin/tirc
+$GRP ircusers /usr/pkg/bin/weechat-curses
+$MOD o-rx /usr/pkg/bin/weechat-curses
+$GRP ircusers /usr/pkg/bin/znc
+$MOD o-rx /usr/pkg/bin/znc
+# TODO: more IRC clients
+$GRP meta /usr/pkg/sbin/mtr
+$MOD o-rx /usr/pkg/sbin/mtr
+$GRP meta /usr/pkg/bin/ttcp
+$MOD o-rx /usr/pkg/bin/ttcp
+$MOD o-rx /usr/pkg/bin/qemu-*
+$GRP meta /usr/pkg/bin/qemu-*
+$MOD o-rx /usr/pkg/bin/bochs
+$GRP meta /usr/pkg/bin/bochs
+$MOD o-rx /usr/pkg/bin/hercules
+$GRP meta /usr/pkg/bin/hercules
+$MOD o-rx /usr/pkg/bin/simh-*
+$GRP meta /usr/pkg/bin/simh-*
+$MOD o-rx /usr/pkg/bin/john
+$GRP foo /usr/pkg/bin/john
+$GRP meta /usr/pkg/bin/bmon
+$MOD o-rx /usr/pkg/bin/bmon
+#$GRP mp3 /usr/pkg/bin/mpc
+#$MOD o-rx /usr/pkg/bin/mpc
+# samba
+$GRP meta /usr/pkg/bin/smb*
+$MOD o-rx /usr/pkg/bin/smb*
+# things below yield kernel panic
+# XXX $GRP meta /usr/pkg/emul/linux32
+# XXX $MOD o-rx /usr/pkg/emul/linux32
+#$GRP anytermd /usr/pkg/bin/anytermd
+#$MOD o-rx /usr/pkg/bin/anytermd
+#$GRP anytermd /usr/pkg/bin/anytermlogin
+#$MOD o-rx /usr/pkg/bin/anytermlogin
+#$MOD -s /usr/pkg/emul/linux32/usr/lib/pt_chown
+#$MOD -s /usr/pkg/emul/linux32/bin/su
+#$MOD -s /usr/pkg/bin/kwrited
+#$MOD -s /usr/pkg/bin/xscreensaver*
+#$MOD -s /usr/pkg/bin/kppp
+#$MOD -s /usr/pkg/bin/hercifc
+#$MOD -s /usr/pkg/bin/pulseaudio
+#$MOD -s /usr/pkg/bin/xlock
+#$MOD -s /usr/pkg/bin/su
+#$MOD -s /usr/pkg/bin/otp
+#$MOD -s /usr/pkg/lib/kde4/libexec/fileshareset
+#$MOD -s /usr/pkg/lib/kde4/libexec/kcheckpass
+#$MOD -s /usr/pkg/lib/kde4/libexec/kcheckpass
+$MOD -R -s /usr/pkg
+# fixes later
+$MOD go-rx /usr/pkg/bin/tor
+$MOD go-rx /usr/pkg/bin/tor-gencert
+#$MOD go-rx /usr/pkg/bin/tor-resolve
+#$MOD go-rx /usr/pkg/bin/torify
+#$MOD go-rx /usr/pkg/etc/tor
+#$MOD o-rx /usr/pkg/etc/tor/torrc
+#$MOD o-rx /usr/pkg/etc/tor/tor
+#$GRP tor /usr/pkg/etc/tor/tor
+#$GRP tor /usr/pkg/etc/tor/torrc
+$MOD go-rx /usr/pkg/etc/denyhosts.conf
+$MOD go-rx /var/db/denyhosts
+# XXX
+#$MOD -R u-s /usr/pkg/libexec
+#$MOD -R -s /usr/pkg/emul
+#$MOD -s /usr/pkg/libexec/polkit-*
+#$MOD -R -s /usr/pkg/lib/kde4/
+#$MOD -R -s /usr/pkg/heirloom
+#$MOD -s /usr/pkg/bin/xbill
+#$MOD -s /usr/pkg/bin/pkexec
+#$MOD -R -s /usr/pkg/lib/polkit*
+
+# for ethif:
+$GRP meta /dev/sysmon
+$MOD g+r /dev/sysmon
+# sudo
+$MOD u+s /usr/pkg/bin/sudo
+$GRP wheel /usr/pkg/bin/sudo
+$MOD o-rx /usr/pkg/bin/sudo
+# fix gopher
+$MOD 775 /var/gopher
+$GRP wheel /var/gopher
+# Xorg
+#$MOD -s /usr/X11R7/bin/Xorg
+#$MOD go-rx /usr/X11R7/bin/Xorg
+# fix apache after pkg upgrade
+#$RM -f /etc/pkg/httpd/httpd.conf/httpd.conf
+#$MOD +x /etc/pkg/httpd/httpd.conf
+# crashme XXX
+$MOD 750 /usr/pkg/sbin/crashme
+# named
+$GRP named /var/chroot/named
+$MOD o-rx /var/chroot/named
+# fixchmod conf itself
+$MOD 600 /repl/etc/fixchmodrc
+# logs only for superuser and wheel
+$MOD 750 /var/log
+# (mongolska) /meta
+$MOD 775 /meta
+
+# fixes for un'-s'ing /usr/pkg
+$MOD u+s /usr/pkg/bin/mtr-packet
+
+# beeperek
+$MOD g+rw /dev/speaker
+
+# for doomlegacy
+$MOD g+rw /dev/wsmouse
+
+# vchiq (omxplayer potrzebuje)
+$MOD g+rw /dev/vchiq
+
+#######################
+
+} 2> /dev/null

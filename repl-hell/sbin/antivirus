@@ -1,0 +1,7 @@
+#! /bin/sh
+
+echo RUNNING CLAMSCAN
+echo IT WILL TAKE A LONG TIME...
+
+/usr/bin/freshclam
+/usr/bin/clamscan -ir --exclude-dir '\.\/dev' --exclude-dir '\.\/sys' --exclude-dir '\.\/proc' ./

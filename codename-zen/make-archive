@@ -1,0 +1,9 @@
+#! /bin/sh
+
+echo "Making archive..."
+
+rm -f scratch/yenn-build.txz 2>/dev/null
+cd /codename-zen
+tar vcJpf codename-zen.txz obj/sys/arch/amd64/compile/YENN/ release
+
+exit $?

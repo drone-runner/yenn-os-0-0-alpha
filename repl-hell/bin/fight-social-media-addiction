@@ -1,0 +1,16 @@
+#! /bin/sh
+
+if [ "x$1" = "xyes" ]; then
+	echo "Gosh, thanks God…"
+	sudo apt remove -y hexchat ircii irssi irssi-scripts
+	sudo apt autoremove -y
+elif [ "x$1" = "xfuckit" ]; then
+	echo "As you wish…"
+	sudo apt install -y hexchat ircii irssi irssi-scripts
+	sudo apt remove -y hexchat-plugins hexchat-python3
+else
+	echo 'Fight social media addiction:'
+	echo 'Syntax:'
+	echo  `basename $0` 'yes'
+	echo  `basename $0` 'fuckit'
+fi

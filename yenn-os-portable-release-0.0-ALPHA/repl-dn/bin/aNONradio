@@ -1,0 +1,7 @@
+#! /bin/sh
+
+while true
+do
+	mpg123 -@ http://anonradio.net:8000/anonradio
+	sleep 5
+done

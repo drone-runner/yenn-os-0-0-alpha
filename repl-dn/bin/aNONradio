@@ -1,0 +1,6 @@
+#! /bin/sh
+while true
+do
+	torify /usr/pkg/bin/omxplayer http://anonradio.net:8000/anonradio
+	sleep 5
+done

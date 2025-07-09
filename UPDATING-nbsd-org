@@ -1,0 +1,136 @@
+Maintaining a system
+Booting single user
+\todo Describe how to boot single user via the serial console and via the fb
+console.
+
+vcgencmd
+The program vcgencmd, referenced in the boot section, can be found in
+pkgsrc/misc/raspberrypi-userland.
+
+Updating the kernel
+Run uname -a to determine the name of the config of your current kernel. For
+NetBSD <= 8, one ran RPI or RPI2. For NetBSD >=9, one uses GENERIC.
+Build a new kernel, e.g. using build.sh. Ideally, run "build.sh release" and
+look in releasedir/binary/kernels. If building just a kernel, it will tell you
+where the ELF version of the kernel is, e.g. ... Kernels built from GENERIC:
+/Users/feyrer/work/NetBSD/cvs/src-current/obj.evbarm-Darwin-XXX/sys/arch/evbarm/
+compile/GENERIC/netbsd ...
+There are multiple kernel formats produced by a release build, for use with
+different boot loader schemes.. For GENERIC:
+netbsd-GENERIC: A normal kernel in ELF format.
+netbsd-GENERIC.img: In NetBSD >= 9, formatted for the RPI bootloader.
+netbsd-GENERIC.bin: In NetBSD <= 8, formatted for the RPI bootloader. In NetBSD
+>= 9, ?????? In NetBSD 9, this kernel WILL NOT boot.
+netbsd-GENERIC.ub: A kernel in uboot format.
+Depending on your hardware version, copy this either to /boot/kernel.img (First
+generation Pi, Pi Zero hardware) or to /boot/kernel7.img (Pi 2, Pi 3 hardware)
+reboot
+\todo Explain if updating firmware is necessary when e.g. moving from 8 to 9,
+or 9 to current.
+
+Updating dtb files
+NetBSD 8
+On NetBSD 8, dtb files are not used.
+
+NetBSD 9
+Build a release. gunzip the armv7.img, vnconfig it, and mount the MSDOS
+partition (e) e.g. on /mnt. Copy the dtb files from /mnt/foo.dtb to /boot, and
+from /mnt/dtb/foo.dtb to /boot/dtb.
+
+It seems that some systems, including RPI, require dtb files in /boot, and some
+expect them in /boot/dtb.
+
+NetBSD current
+When updating, ensure that /boot is mounted and that you unpack the dtb set.
+
+Updating the firmware
+It is highly likely that running NetBSD from a given branch X with firmware
+from a branch Y < X will not go well. It is unclear if firmware from a branch Y
+> X will work. It is standard practice to use firmware from the right branch.
+
+A section below describes the process of updating NetBSD's copy of the firmware
+from upstream, with testing, by NetBSD developers. This section is about
+updating a system's firmware from the firmware in a version of NetBSD.
+
+(Updating the firmware is harder than it should be.) Build a release. gunzip
+the armv7.img, vnconfig it, and mount the MSDOS partition (e) e.g. on /mnt.
+Copy files from that to /boot that have changes, carefully.
+
+Relevant files include bootcode.bin, start.elf and start_cd.elf.
+
+Compare cmdline.txt, but beware that just overwriting it will lose
+customizations like using the serial console instead of the framebuffer.
+
+\todo Explain where the firmware is in the source tree, and note that it is not
+in the installed system image (such as /usr/mdec). Explain how to update a
+system (presumably /boot) from either an installed system's new firmware files,
+or the source tree. Explain any particular cautions.
+
+\todo Explain if using updated firmware from one branch (e.g. netbsd-current)
+on a system using a different branch (e.g. netbsd-8) is safe. Explain if
+pullups are done to release branches with new firmware.
+
+Booting
+The device boots by finding a file "bootcode.bin". The primary location is a
+FAT32 partition on the uSD card, and an additional location is on a USB drive.
+See the upstream documentation on booting and read all the subpages.
+
+The standard approach is to use a uSD card, with a fdisk partition table
+containing a FAT32 partition marked active, and a NetBSD partition. The NetBSD
+partition will then contain a disklabel, pointing to an FFS partition (a), a
+swap partition (b) and the FAT32 boot partition mounted as /boot (e). The file
+/boot/cmdline.txt has a line to set the root partition.
+
+One wrinkle in the standard approach is that the disk layout is "boot swap /",
+but the NetBSD fdisk partition starts at the location of /, so the swap
+partition is not within the NetBSD fdisk partition. The / partition can hold a
+disklabel, while swap cannot. It is normal to have swap after / (and thus
+within the fdisk partition), but the arrangement used permits growing / on
+first boot, for the typical case where a larger uSD is used, compared to the
+minimum image size.
+
+An alternate approach is to have the boot FAT32 partition as above, but to have
+the entire system including root on an external disk. This is configured by
+changing root=ld0a to root=sd0a or root=dk0 (depending on disklabel/GPT).
+Besides greater space, part of the point is to avoid writing to the uSD card.
+
+A third approach, workable on the Pi 3 only, is to configure USB host booting
+(already enabled on the 3+; see the upstream documentation) and have the boot
+partition also on the external device. In this case the external device must
+have an MBR because the hardware's first-stage boot does not have GPT support.
+In theory the procedure to program USB host boot mode will function on a NetBSD
+system because the programming is done by bootcode.bin. \todo Confirm that
+putting program_usb_boot_mode=1 in config.txt and booting works to program the
+OTP bit. Confirm that one can then boot NetBSD from external USB.
+
+There is no well-defined USB enumeration order, so the preferred approach if
+one has multde aarch32/aarch64
+\todo Verify this, and add any necessary cautions about boot code.
+
+The aarch64 kernel can run aarch32 binaries, so one can boot an aarch64 kernel
+on a system with an aarch32 userland.
+
+X11 and GPU
+Video acceleration currently only worke normally accelerated. NetBSD/aarch64
+normally uses llvmpipe to provide fast parallel CPU-driven support for OpenGL,
+so should be faster when running normal applications.
+
+The situation should be improved, ideally by writing a DRM/KMS driver.
+
+Video playlibraries are included with the misc/raspberrypi-userland package.
+
+Quake 3
+A Raspberry Pi optimized build of ioquake3 is available in the
+games/ioquake3-raspberrypi package. To use it, the following additional
+resources are required:
+
+pak0.pk3 from Quake/pkg/lib/ioquake3/baseq3 directory.
+
+RetroArch / Libretro
+Using emulators/retroarch it is possible to run many emulators at full speed
+the Raspberry Pi. Emulator cores for various gaming consoles are available in
+the emulators/libretro-* packages. To begirectInput" mode (set "D/X" switch to
+"D"). Note that since the framebuffer GL driver will not allow for keyboard
+input in RetroArch, you will have to copy your joypad configuration from
+another system.
+Configure retroarch by editing $HOME/.config/retroarc

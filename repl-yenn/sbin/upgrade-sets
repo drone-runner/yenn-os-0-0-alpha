@@ -1,0 +1,3 @@
+#! /bin/sh
+
+for i in $(cat /repl/etc/setlist); do cd / && echo "$(basename $i)" && pax -r -pe -z -f $i; done

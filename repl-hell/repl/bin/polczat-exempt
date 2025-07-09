@@ -1,0 +1,14 @@
+#! /bin/sh
+
+echo "Setting up Polczat exempt (you will reveal your real IP on the chat)"
+
+sudo ufw allow out from any to 136.243.36.55/32
+sudo ip route add 136.243.36.55/32 via 192.168.1.1 dev enp3s0
+sudo ufw allow out from any to 104.26.2.189/32
+sudo ip route add 104.26.2.189/32 via 192.168.1.1 dev enp3s0
+sudo ufw allow out from any to 104.26.3.189/32
+sudo ip route add 104.26.3.189/32 via 192.168.1.1 dev enp3s0
+sudo ufw allow out from any to 172.67.68.145/32
+sudo ip route add 172.67.68.145/32 via 192.168.1.1 dev enp3s0
+
+echo "It should be set up."

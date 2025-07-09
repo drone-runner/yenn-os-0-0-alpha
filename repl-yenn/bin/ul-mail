@@ -1,0 +1,14 @@
+#! /bin/sh
+
+PATH="/repl/bin:$HOME/bin:/bin:/usr/bin:/usr/pkg/bin:/usr/local/bin"
+export PATH
+
+while true
+do
+	echo 'Launching mutt...'
+	sleep 1
+	mutt
+	echo 'Sleeping for 5 seconds...'
+	echo '(You can press CTRL-C to quit)'
+	sleep 4
+done

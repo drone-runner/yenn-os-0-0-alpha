@@ -1,0 +1,6 @@
+#! /bin/sh
+
+echo 'Enabling Network Manager...'
+
+systemctl start  NetworkManager
+systemctl enable NetworkManager

@@ -1,0 +1,10 @@
+#! /bin/sh
+PATH=/repl/bin:/bin:/usr/bin
+export PATH
+
+for i in /etc/ssh/*.pub; do
+	ssh-keygen -l -E sha256 -f $i 2>/dev/null
+done
+for i in /etc/ssh/*.pub; do
+	ssh-keygen -l -E md5 -f $i 2>/dev/null
+done

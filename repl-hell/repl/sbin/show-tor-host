@@ -1,0 +1,4 @@
+#! /bin/sh
+
+TORBASE='/var/lib/tor'
+exec cat ${TORBASE}/$(hostname)/hostname

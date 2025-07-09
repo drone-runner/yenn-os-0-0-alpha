@@ -1,0 +1,5 @@
+#! /bin/sh
+
+echo 'ZOOR USER'
+umask 022
+exec sudo su - zoor

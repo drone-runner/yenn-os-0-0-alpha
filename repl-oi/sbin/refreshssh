@@ -1,0 +1,3 @@
+#! /bin/sh
+
+exec svcadm refresh network/ssh

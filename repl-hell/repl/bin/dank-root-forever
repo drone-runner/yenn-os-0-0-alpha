@@ -1,0 +1,11 @@
+#! /bin/sh
+
+unset PATH
+
+while true
+do
+	/usr/bin/ssh -t root@dankmaymay-tmp /usr/bin/tmux attach
+	/bin/echo 'Lost connection to root@dankmaymay.'
+	/bin/sleep 10
+	/bin/echo 'Reconnecting...'
+done

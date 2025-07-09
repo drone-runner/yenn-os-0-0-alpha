@@ -1,0 +1,13 @@
+#! /bin/sh
+
+unset PATH
+
+while true
+do
+	/bin/clear
+	/usr/bin/ssh yenn-os-testbed
+	/bin/echo 'Lost connection to the host.'
+	/bin/sleep 2.5
+	/bin/echo 'Reconnecting...'
+	/bin/sleep 2.5
+done

@@ -1,0 +1,5 @@
+#! /bin/sh
+
+echo "DEnying THE AnGRy MaSTeR FOO"
+sudo /usr/sbin/iptables -I OUTPUT -o tun0 -s 0/0 -d 0/0 -m owner --uid-owner foo -j REJECT
+sudo /usr/sbin/iptables -I OUTPUT -o tun0 -s 0/0 -d 0/0 -m owner --gid-owner foo -j REJECT

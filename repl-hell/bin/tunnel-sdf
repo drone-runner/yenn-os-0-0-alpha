@@ -1,0 +1,7 @@
+#! /bin/sh
+
+. /repl/etc/tunneled-IPs.conf
+
+echo "General tunnel via SDF.  Be careful."
+
+exec /usr/bin/sshuttle --python=/usr/pkg/bin/python3.10 --dns -r dmb@tty.sdf.org $IPs

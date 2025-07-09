@@ -1,0 +1,26 @@
+#! /bin/sh
+
+echo "Making $(hostname) backups..."
+
+cd / || exit 1
+tar -pczf /hell-backups/etc-$(hostname)-$(date +%Y%m%d).tar.gz -C / etc/
+tar -pczf /hell-backups/usrlocaletc-$(hostname)-$(date +%Y%m%d).tar.gz -C / usr/local/etc/
+################################################################
+apt list --installed | grep 'zainstalowany\]' | cut -f 1 -d '/' > /hell-backups/aptlist.txt
+#snap list | cut -f 1 -d ' ' > /hell-backups/snaplist.txt
+################################################################
+#tar -pcf /hell-backups/aroms-$(hostname)-$(date +%Y%m%d).tar -C / aroms/
+#tar -pczf /hell-backups/AI-$(hostname)-$(date +%Y%m%d).tar -C / AI/
+tar -pczf /hell-backups/repl-$(hostname)-$(date +%Y%m%d).tar.gz -C / repl/
+tar -pczf /hell-backups/builds-$(hostname)-$(date +%Y%m%d).tar.gz -C / builds/
+tar -pczf /hell-backups/vm-$(hostname)-$(date +%Y%m%d).tar.gz -C / vm/
+tar -pczf /hell-backups/vpn-$(hostname)-$(date +%Y%m%d).tar.gz -C / vpn/
+#tar -pczf /hell-backups/art-$(hostname)-$(date +%Y%m%d).tar.gz -C / art/
+tar -pczf /hell-backups/foo-$(hostname)-$(date +%Y%m%d).tar.gz -C / foo/
+#tar -pczf /hell-backups/hidden_stuff-$(hostname)-$(date +%Y%m%d).tar.gz -C / Tor hid*/
+#tar -pczf /hell-backups/aws-$(hostname)-$(date +%Y%m%d).tar.gz -C / aws/
+tar -pcf /hell-backups/server-backups-$(hostname)-$(date +%Y%m%d).tar -C / server-backups/
+tar -pcf /hell-backups/bialyd-$(hostname)-$(date +%Y%m%d).tar -C / bialyd/
+tar -pcf /hell-backups/s-$(hostname)-$(date +%Y%m%d).tar -C / u/
+#tar -pcf /hell-backups/s-$(hostname)-$(date +%Y%m%d).tar -C / s/
+echo 'It should be done, but check the above messages.'

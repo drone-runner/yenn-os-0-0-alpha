@@ -1,0 +1,11 @@
+#! /bin/sh
+
+echo 'Now building... dankmaymay tools:'
+
+cd src && \
+	nice -n 20 ./build.sh -T /builds/scratch/dank/tools/ -O /builds/scratch/dank/obj/ -R /builds/scratch/dank/release/ -U -j 8 -m i386 -x tools && \
+	echo DANKMAYMAY TOOLS BUILD DONE && \
+	exit 0
+
+echo FAILURE
+exit 1

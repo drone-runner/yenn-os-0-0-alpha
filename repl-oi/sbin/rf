@@ -1,0 +1,3 @@
+#! /bin/sh
+svcadm refresh network/ipfilter && \
+	echo "---> Should be OK"

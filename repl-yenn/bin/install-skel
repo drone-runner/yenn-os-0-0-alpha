@@ -1,0 +1,2 @@
+#! /bin/sh
+cp -p /etc/pkg/skel/.* ~ 2>/dev/null

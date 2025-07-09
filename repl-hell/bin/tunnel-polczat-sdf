@@ -1,0 +1,5 @@
+#! /bin/sh
+
+echo "POLCZAT; BEWARE"
+
+exec /usr/bin/sshuttle --python=/usr/pkg/bin/python3.8 --dns -r dmb@tty.sdf.org 136.243.36.55 104.26.2.189 104.26.3.189 172.67.68.145

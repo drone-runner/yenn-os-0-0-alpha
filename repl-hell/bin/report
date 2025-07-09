@@ -1,0 +1,55 @@
+#! /bin/bash
+
+PATH="/repl/bin:/usr/bin:/bin"
+
+pause () {
+	for ((i=0;i<=177;i++)); do
+		echo -n .
+		sleep 1.7
+	done
+	echo ' '
+}
+
+hr () {
+	echo '-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-'
+}
+
+checkUrl () {
+	echo "*** $1"
+	torify httping -c 1 -g $1
+	hr
+}
+
+if [ "x$1" = "x" ]
+then
+	MIASTOPL='Hel,PL'
+else
+	MIASTOPL="$1"
+fi
+
+DELLNGONION="$(cat /Tor | grep dell-ng | cut -f 1)"
+DNONION="$(cat /Tor | grep darkness | cut -f 1)"
+HFONION="$(cat /Tor | grep holdfast | cut -f 1)"
+
+while true
+do
+	reset
+	clear
+	echo "*** `uname -s`/`uname -m`/`uname -r`/`hostname`"
+	echo "***`torify ansiweather -a false -s true -d true -l $MIASTOPL,PL`"
+	pause
+	hr
+	{
+		echo "*** dell-ng:    $(torify ssh uptime@$DELLNGONION)"
+		echo "*** darkness:   $(torify ssh uptime@$DNONION)"
+		echo "*** piggy:      $(ssh uptime@piggy.ulegend.net)"
+		echo "*** nb-ec2:     $(ssh uptime@nb-ec2.ulegend.net)"
+		echo "*** holdfast:   $(torify ssh uptime@$HFONION uptime)"
+	} 2>/dev/null
+	pause
+	hr
+	checkUrl http://showup.tv
+	hr
+	checkUrl http://gov.pl
+	pause
+done

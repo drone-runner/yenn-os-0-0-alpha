@@ -1,0 +1,13 @@
+#! /bin/sh
+
+unset PATH
+
+while true
+do
+	/bin/clear
+	/usr/bin/ssh tmp.ulegend.net
+	/bin/echo 'Lost connection to the temporary host.'
+	/bin/sleep 2.5
+	/bin/echo 'Reconnecting...'
+	/bin/sleep 2.5
+done

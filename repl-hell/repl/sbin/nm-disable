@@ -1,0 +1,6 @@
+#! /bin/sh
+
+echo 'Disabling Network Manager...'
+
+systemctl stop    NetworkManager
+systemctl disable NetworkManager

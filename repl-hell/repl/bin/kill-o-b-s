@@ -1,0 +1,6 @@
+#! /bin/sh
+echo 'SENDING TERM TO OBS'
+sudo su - dmb -c 'pkill obs'
+sleep 10
+echo 'SENDING KILL TO OBS'
+sudo su - dmb -c 'pkill -9 obs'

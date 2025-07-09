@@ -1,0 +1,6 @@
+#! /bin/sh
+
+. /repl/etc/wdog.conf
+
+echo "Disabling watchdog $dev"
+/sbin/wdogctl -d

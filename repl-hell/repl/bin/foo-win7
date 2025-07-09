@@ -1,0 +1,10 @@
+#! /bin/sh
+
+echo 'FOO2 for aqemu Win7'
+
+echo "Remember to first redirect networking (foo2-no-net.)"
+#echo "Disabling foo2's networking:"
+#sudo /repl/sbin/foo2-no-net
+
+echo "Actually gone foo2."
+exec sudo su - foo2

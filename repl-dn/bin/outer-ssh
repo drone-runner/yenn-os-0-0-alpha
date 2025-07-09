@@ -1,0 +1,18 @@
+#! /bin/sh
+
+. ${HOME}/.outer-sshrc
+
+if [ "xHOST" = "x" -o "xPORT" = "x" ]
+then
+	echo "You need to set up ~/.outer-sshrc.  Exiting."
+	exit 1
+fi
+
+PATH=/bin:/usr/bin
+
+while true
+do
+	echo 'STARTING OUTER SSH'
+	ssh -4 ${HOST} -R ${PORT}:127.0.0.1:22 -t 'while true; do echo -n .; sleep 1; done'
+	sleep 10
+done

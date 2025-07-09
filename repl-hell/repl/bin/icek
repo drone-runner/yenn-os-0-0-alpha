@@ -1,0 +1,3 @@
+#! /bin/sh
+
+cd '/bialyd/.wine/drive_c/Program Files/ICeQ 5.14 Polfan.pl' && exec wine Chat.exe

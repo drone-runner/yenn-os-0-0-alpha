@@ -1,0 +1,15 @@
+#! /bin/sh
+
+echo 'Removing stale files...'
+
+rm -Rf /builds/scratch/dank/obj/* /builds/scratch/dank/tools/* /builds/scratch/dank/release/* 2>&1 >/dev/null
+
+echo 'Now building... dankmaymay:'
+
+cd /builds/scratch/dank/src && \
+	nice -n 20 ./build.sh -T /builds/scratch/dank/tools/ -O /builds/scratch/dank/obj/ -R /builds/scratch/dank/release/ -U -j 8 -m i386 -x tools distribution sets && \
+	echo DANKMAYMAY BUILD DONE && \
+	exit 0
+
+echo FAILURE
+exit 1

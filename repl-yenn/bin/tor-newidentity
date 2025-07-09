@@ -1,0 +1,3 @@
+#! /bin/sh
+
+sudo /etc/rc.d/tor reload 2>&1 > /dev/null

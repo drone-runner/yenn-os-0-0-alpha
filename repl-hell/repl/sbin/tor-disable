@@ -1,0 +1,6 @@
+#! /bin/sh
+
+echo 'Disabling Tor...'
+
+systemctl stop    tor
+systemctl disable tor

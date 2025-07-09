@@ -1,0 +1,4 @@
+#! /bin/sh
+
+echo 'Bullshit hosts:'
+exec pfctl -t bs-hosts -T show

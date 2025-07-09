@@ -1,0 +1,8 @@
+#! /bin/sh
+PATH=/bin:/usr/bin
+{
+	for i in `ls /home | grep -v 'lost+found' | sort -u`
+	do
+		echo '===>' "$i"; ps uaxwwU "$i"
+	done
+} | exec less -d

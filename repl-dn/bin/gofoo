@@ -1,0 +1,10 @@
+#! /bin/sh
+
+sudo vnconfig vnd0 /foostor
+sudo cgdconfig cgd0 /dev/vnd0
+sudo fsck -y /dev/rcgd0a
+sudo mount -o noatime,rw /dev/cgd0a /foo
+sudo su - foo
+sudo umount /foo
+sudo cgdconfig -u cgd0
+sudo vnconfig -u vnd0

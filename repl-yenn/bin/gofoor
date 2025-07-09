@@ -1,0 +1,5 @@
+#! /bin/sh
+
+echo 'FOOR USER'
+umask 022
+exec sudo su - foor

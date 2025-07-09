@@ -1,0 +1,7 @@
+#! /bin/sh
+if [ "$*" = "" ]; then
+	loc=London
+else
+	loc="${1}"
+fi
+exec curl "wttr.in/${loc}"

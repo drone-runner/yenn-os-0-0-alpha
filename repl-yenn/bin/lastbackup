@@ -1,0 +1,3 @@
+#! /bin/sh
+
+echo "Last backup level: $(sudo cat /repl/etc/dumprc)"

@@ -1,0 +1,12 @@
+#! /bin/sh
+
+. ./yenn-os.conf
+
+echo 'Now building yenn-OS userland and install files:'
+
+cd ${SRCDIR} && \
+	nice -n 20 ./build.sh -T ${SCRATCH}/yenn-os-${BASESYSTEM}-${CPUARCH}-${MACHARCH}/tools/ -O ${SCRATCH}/yenn-os-${BASESYSTEM}-${CPUARCH}-${MACHARCH}/obj/ -R ${SCRATCH}/yenn-os-${BASESYSTEM}-${CPUARCH}-${MACHARCH}/release/ -U -j ${MAKEJOBS} -a ${CPUARCH} -m ${MACHARCH} -x ${USERLAND_TARGETS} && \
+	exit 0
+
+echo FAILURE
+exit 1

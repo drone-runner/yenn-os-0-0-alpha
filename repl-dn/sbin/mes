@@ -1,0 +1,7 @@
+#! /bin/sh
+# mount /enc store
+
+vnconfig vnd1 /encstor
+cgdconfig cgd1 /dev/vnd1
+fsck /dev/rcgd1a
+mount -o noatime,nosuid,noexec,rw /dev/cgd1a /enc

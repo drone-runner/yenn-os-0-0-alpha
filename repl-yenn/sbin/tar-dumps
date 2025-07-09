@@ -1,0 +1,8 @@
+#! /bin/sh
+
+cd /
+mount /b
+rm -f /b/yenn-backup.txz
+tar cJvpf b/yenn-backup.txz b/yenn-?-0-*
+exit $?
+umount /b

@@ -1,0 +1,8 @@
+#! /bin/sh
+
+echo "Connecting to host *zappka*..."
+while true; do
+	ssh -p 10965 -t frog01.mikr.us tmux attach
+	sleep 5
+	echo "Reconnecting..."
+done

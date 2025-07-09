@@ -1,0 +1,6 @@
+#! /bin/sh
+
+echo 'Enabling Tor...'
+
+systemctl enable tor
+systemctl start  tor

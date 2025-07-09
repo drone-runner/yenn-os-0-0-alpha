@@ -1,0 +1,7 @@
+#! /bin/sh
+
+. /repl/etc/tunneled-IPs.conf
+
+echo "General tunnel via Grex.  Be careful."
+
+exec /usr/bin/sshuttle --python=/usr/local/bin/python --dns -r dmb@grex.org $IPs

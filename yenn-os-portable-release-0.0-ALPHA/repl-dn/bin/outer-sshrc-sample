@@ -1,0 +1,3 @@
+HOST=ssh.example.com
+OUTERPORT=8022
+LPORT=22

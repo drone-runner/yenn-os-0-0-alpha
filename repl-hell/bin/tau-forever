@@ -1,0 +1,11 @@
+#! /bin/sh
+
+unset PATH
+
+while true
+do
+	/usr/bin/ssh -t test-t2a.ulegend.net
+	/bin/echo 'Lost connection to the (google) tau instance.'
+	/bin/sleep 5
+	/bin/echo 'Reconnecting...'
+done

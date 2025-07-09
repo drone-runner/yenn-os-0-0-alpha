@@ -1,0 +1,7 @@
+#! /bin/sh
+
+. /repl/etc/wdog.conf
+
+echo "Arming watchdog $dev"
+echo "You have $period seconds"
+/sbin/wdogctl -e -A -p $period $dev

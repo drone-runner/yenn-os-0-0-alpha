@@ -1,0 +1,3 @@
+#! /bin/sh
+
+sudo ufw allow out from any to 192.168.1.1

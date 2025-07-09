@@ -1,0 +1,10 @@
+#! /bin/sh
+
+echo 'FOO USER'
+
+#echo "Disabling foo's networking:"
+#sudo /repl/sbin/foo-tor-nono
+#sudo /repl/sbin/foo-net-YES
+#
+#echo "Actually gone foo."
+exec sudo su - foo

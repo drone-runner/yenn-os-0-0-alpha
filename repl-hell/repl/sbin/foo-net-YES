@@ -1,0 +1,6 @@
+#! /bin/sh
+# QUICK N DIRTY XXX
+
+# NET ON FOR FOO
+iptables -v -D OUTPUT \! -o lo -s 0/0 -d 0/0 -m owner --uid-owner foo -j REJECT
+ip6tables -v -D OUTPUT \! -o lo -s \[::0\]/0 -d \[::0\]/0 -m owner --uid-owner foo -j REJECT

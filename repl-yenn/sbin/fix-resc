@@ -1,0 +1,6 @@
+#! /bin/sh
+
+echo 'Fixing rescue kernel FS modes...'
+chown root:wheel /resc && \
+	chmod 550 /resc && \
+	echo 'Done.'

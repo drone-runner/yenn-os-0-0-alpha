@@ -1,0 +1,11 @@
+#! /bin/sh
+
+while true
+do
+	unset LANG
+	unset LC_ALL
+	ssh -t xesxxxpl@shell.xshellz.com screen -RD
+	echo 'Lost connection to XShellz.'
+	sleep 5
+	echo 'Reconnecting...'
+done

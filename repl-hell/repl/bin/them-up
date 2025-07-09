@@ -1,0 +1,81 @@
+#! /bin/bash
+
+PATH="/repl/bin:/usr/bin:/bin"
+
+lineWrap () {
+	fold -s
+}
+
+pause () {
+	for ((i=0;i<=${1};i++)); do
+		sleep 0.3
+		echo -n .
+		sleep 0.3
+		echo -ne "\r"
+		echo -n o
+		sleep 0.4
+		echo -ne "\r"
+	done
+	echo " "
+}
+
+hr () {
+	echo '-------------------------------------------------------------------------------'
+}
+
+checkUrl () {
+	echo "*** $1"
+	httping -c 1 -g $1
+	hr
+}
+
+checkDNS () {
+	echo "*** Resolving $1"
+	host $1
+	hr
+}
+
+if [ "x$1" = "x" ]
+then
+	MIASTOPL='Lipno'
+else
+	MIASTOPL="$1"
+fi
+
+while true
+do
+	reset
+	clear
+	echo "`uname -a`" | lineWrap
+	hr
+	echo "`ansiweather -a false -s true -d true -l $MIASTOPL,PL`" | lineWrap
+	hr
+	{
+		echo "*** hell:  $(uptime)"
+		echo "*** darkness: $(ssh dn-tmp uptime)"
+		echo "*** yenn-os-testbed: $(ssh yenn-os-testbed uptime)"
+		echo "*** yenn:  $(ssh yenn-tmp uptime)"
+		echo "*** fishy: $(ssh fishy.ulegend.net uptime)"
+		#echo "*** tmp:   $(ssh foo@tmp.ulegend.net uptime)"
+		echo "*** zappka: $(ssh -p 10965 foo@frog01.mikr.us uptime)"
+		#echo "*** bsd:   $(ssh bsd.ulegend.net echo OK)"
+		#echo "*** τ:     $(ssh tau.ulegend.net uptime)"
+		#echo "*** asia:  $(ssh admin@czat.asia uptime)"
+		#echo "*** bsd:   $(ssh bsd.ulegend.net echo OK)"
+	} 2>/dev/null
+	hr
+	checkDNS "-t SOA bialy.info. 1.1.1.1" | lineWrap
+	checkDNS "-t SOA ulegend.net. 1.1.1.1" | lineWrap
+	#pause 600
+	#pause 60
+	#checkUrl http://fizyka.umk.pl
+	#checkUrl http://onet.pl
+	#checkUrl http://showup.tv
+	#checkUrl http://polfan.pl
+	#checkUrl http://pirc.pl
+	#traceroute -4 fishy.ulegend.net
+	#traceroute -4 tau.ulegend.net
+	#traceroute -4 czat.asia
+	#pause 600
+	pause 60
+done

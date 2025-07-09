@@ -1,0 +1,9 @@
+#! /bin/sh
+
+echo "Making archive..."
+
+rm -f /builds/scratch/dn-build-10.txz || exit 2
+cd /
+tar vcJpf /builds/scratch/dn-build-10.txz /builds/scratch/darkness-netbsd-10/obj/sys/arch/evbarm/compile/DARKNESS/ /builds/scratch/darkness-netbsd-10/release/evbarm-earmv7hf/binary/sets /builds/netbsd-10/src/external/broadcom/rpi-firmware/dist/
+
+exit $?

@@ -1,0 +1,6 @@
+#! /bin/sh
+
+mount -t tmpfs -o size=50% none /tmpfs_mnt && \
+	mkdir /tmpfs_mnt/scratch && \
+	chown builds:builds /tmpfs_mnt/scratch && echo ALL OK && exit 0
+echo FAILED; exit 1

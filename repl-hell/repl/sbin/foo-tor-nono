@@ -1,0 +1,6 @@
+#! /bin/sh
+# QUICK N DIRTY XXX
+
+# TOR NO NO FOR FOO
+iptables -v -I OUTPUT \! -o lo -s 0/0 -d 0/0 -m owner --uid-owner foo -j REJECT
+ip6tables -v -I OUTPUT \! -o lo -s \[::0\]/0 -d \[::0\]/0 -m owner --uid-owner foo -j REJECT

@@ -1,0 +1,9 @@
+#! /bin/sh
+
+PATH=/bin:/usr/bin
+
+while true
+do
+	ssh happy.ulegend.net -R 8888:127.0.0.1:8888 -t 'while true; do echo -n X; sleep 1; done'
+	sleep 10
+done

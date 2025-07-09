@@ -1,0 +1,43 @@
+#! /bin/sh
+
+newfs -O2 /dev/rsd0a
+mount /dev/sd0a /mnt && \
+	for i in $(cat /repl/etc/setlist); do cd /mnt && echo "$(basename $i)" && pax -r -pe -z -f $i; done
+cd /
+chroot /mnt '/bin/sh -c "cd dev && ./MAKEDEV all"'
+chroot /mnt installboot /dev/rsd0a /usr/mdec/bootxx_ffsv2
+chroot /mnt cp -p /usr/mdec/boot /
+cp -p /boot.cfg /mnt/
+cp -p /nb-kernel /mnt/
+cp -p /nb-kernel.gdb /mnt/
+cp -Rp /repl /mnt/
+cp -Rp /etc /mnt/
+mkdir -p /mnt/usr/pkg
+cp -Rp /usr/pkg/etc /mnt/usr/pkg/
+cp -p /.profile /mnt/
+cp -p /.bashrc /mnt/
+cp -p /.bash_profile /mnt/
+cp -Rp /.*zsh* /mnt/
+cp -p /LICENSE /mnt/
+cp -p /TODO /mnt/
+cp -p /DRAFT /mnt/
+cp -Rp /u /mnt/
+cp -Rp /www /mnt/
+cp -Rp /*czat* /mnt/
+mkdir /mnt/b
+chmod 700 /mnt/b
+cp -Rp /.config /.local /mnt/
+cp -p /.screenrc /mnt/
+cp -p /.tmux.conf /mnt/
+cp -p /entropy-file /mnt/
+cp -p /bin/zsh /mnt/bin/
+cp -p /bin/bash /mnt/bin/
+cp -p /bin/fish /mnt/bin/
+cp -p /usr/bin/perl /mnt/usr/bin/
+echo 'YENN.ULEGEND.NET FUJITSU FUTRO VERSION' | tee /mnt/NOTES
+echo "Let's see how it works: chroot /mnt...  Try running fixc."
+echo "And install packages."
+chroot /mnt /bin/sh
+cd /
+echo "Hopefully it will work!"
+echo "Exiting."

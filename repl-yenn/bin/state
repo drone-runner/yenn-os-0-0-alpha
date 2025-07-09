@@ -1,0 +1,3 @@
+#! /bin/sh
+
+exec watch -n 2 'envstat; echo; vnstat -h'

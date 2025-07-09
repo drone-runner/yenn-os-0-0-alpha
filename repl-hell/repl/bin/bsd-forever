@@ -1,0 +1,11 @@
+#! /bin/sh
+
+unset PATH
+
+while true
+do
+	/usr/bin/ssh -t bsd.ulegend.net
+	/bin/echo 'Lost connection to OpenBSD Warsaw host.'
+	/bin/sleep 5
+	/bin/echo 'Reconnecting...'
+done

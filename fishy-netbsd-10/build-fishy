@@ -1,0 +1,16 @@
+#! /bin/sh
+
+echo 'Removing stale files...'
+
+rm -Rf /builds/scratch/fishy/
+
+echo 'Now building FISHY:'
+
+cd src && \
+	nice -n 20 ./build.sh -T /builds/scratch/fishy/tools/ -O /builds/scratch/fishy/obj/ -R /builds/scratch/fishy/release/ \
+		-U -j 8 -m amd64 -x tools kernel=/builds/fishy-netbsd-10/FISHY \
+		distribution sets && \
+	exit 0
+
+echo FAILURE
+exit 1

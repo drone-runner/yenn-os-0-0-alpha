@@ -1,0 +1,12 @@
+#! /bin/sh
+
+while true
+do
+	# XXX too long $TERM
+	TERM=vt220
+	export TERM
+	ssh -t dmb@grex.org screen -RD
+	echo 'Lost connection to Grex.'
+	sleep 10
+	echo 'Reconnecting…'
+done

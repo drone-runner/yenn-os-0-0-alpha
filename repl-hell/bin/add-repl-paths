@@ -1,0 +1,2 @@
+PATH="/repl/sbin:/repl/bin:$PATH"
+export PATH

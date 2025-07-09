@@ -1,0 +1,10 @@
+#! /bin/sh
+
+echo 'Now building the kernel.'
+cd src && \
+	nice -n 20 ./build.sh -T /codename-zen/tools/ -O /codename-zen/obj/ -R /codename-zen/release/ \
+		-U -j 8 -m amd64 -x kernel=/codename-zen/YENN
+	exit 0
+
+echo FAILURE
+exit 1

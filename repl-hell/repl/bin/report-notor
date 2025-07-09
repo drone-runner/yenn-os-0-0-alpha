@@ -1,0 +1,11 @@
+#! /bin/bash
+
+while true
+do
+	reset
+	clear
+	echo "*** `hostname` | `uname -s`/`uname -m`/`uname -r`/`hostname` | `uptime`"
+	ssh uptime@holdfast /bin/sh -c 'echo "*** `hostname` | `uname -s`/`uname -m`/`uname -r`/`hostname` | `uptime`")'
+	ssh uptime@dell-ng /bin/sh -c 'echo "*** `hostname` | `uname -s`/`uname -m`/`uname -r`/`hostname` | `uptime`")'
+	sleep 300
+done

@@ -1,0 +1,5 @@
+#! /bin/sh
+
+echo 'UNSAFE XXX'
+
+exec sudo su - unsafe

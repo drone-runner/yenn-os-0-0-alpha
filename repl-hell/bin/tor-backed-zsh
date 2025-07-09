@@ -1,0 +1,7 @@
+#! /bin/sh
+
+echo ENTERING TOR-BACKED ZSH
+
+/usr/bin/torify /bin/zsh
+
+echo 'SAFE SHELL EXITED!!!'

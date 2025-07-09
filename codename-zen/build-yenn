@@ -1,0 +1,18 @@
+#! /bin/sh
+
+echo 'Removing stale files...'
+
+rm -Rf /codename-zen/tools/
+rm -Rf /codename-zen/obj/
+rm -Rf /codename-zen/release/
+
+echo 'Now building YENN:'
+
+cd src && \
+	nice -n 20 ./build.sh -T /codename-zen/tools/ -O /codename-zen/obj/ -R /codename-zen/release/ \
+		-U -j 8 -m amd64 -x tools kernel=/codename-zen/YENN \
+		distribution sets && \
+	exit 0
+
+echo FAILURE
+exit 1

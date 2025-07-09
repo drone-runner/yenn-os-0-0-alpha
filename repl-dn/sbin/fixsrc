@@ -1,0 +1,8 @@
+#! /bin/sh
+
+echo 'Fixing file modes, it can take a few minutes...'
+
+DIRS="/usr/src /usr/xsrc /usr/release /usr/obj /usr/tools /usr/pkgsrc"
+PATH="/sbin:/bin:/usr/sbin:/usr/bin"
+chown -R builds:wsrc $DIRS
+chmod -R g+w $DIRS

@@ -1,0 +1,5 @@
+#! /bin/sh
+
+echo "RUNNING IFTOP AS ROOT"
+
+exec sudo /usr/sbin/iftop -nblBP

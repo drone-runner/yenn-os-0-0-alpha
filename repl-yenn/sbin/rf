@@ -1,0 +1,5 @@
+#! /bin/sh
+/etc/rc.d/ipfilter reload && \
+/etc/rc.d/ipnat reload && \
+echo "---> Should be OK"
+#XXXetc/rc.d/pf reload && \

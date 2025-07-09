@@ -1,0 +1,11 @@
+#! /bin/sh
+
+mount -a
+
+cd /
+for i in `cat /repl/etc/setlist`; do
+	cd /
+	echo $(basename $i)
+	tar xpJf $i
+done
+

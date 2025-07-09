@@ -1,0 +1,4 @@
+#! /bin/sh
+
+chown root:wheel /nb-kernel /nb-kernel.gdb
+chmod 750 /nb-kernel /nb-kernel.gdb

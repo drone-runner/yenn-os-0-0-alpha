@@ -1,0 +1,6 @@
+#! /bin/sh
+
+iptables -t nat -A OUTPUT -p tcp -s 0/0 -d 0/0 -m owner --uid-owner foo2 -j REDIRECT --to-ports 1984
+ip6tables -t nat -A OUTPUT -p tcp -s 0/0 -d 0/0 -m owner --uid-owner foo2 -j REDIRECT --to-ports 1984
+iptables -t nat -A OUTPUT -p udp -s 0/0 -d 0/0 -m owner --uid-owner foo2 -j REDIRECT --to-ports 9053
+ip6tables -t nat -A OUTPUT -p udp -s 0/0 -d 0/0 -m owner --uid-owner foo2 -j REDIRECT --to-ports 9053

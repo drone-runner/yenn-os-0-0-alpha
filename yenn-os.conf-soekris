@@ -1,0 +1,9 @@
+BASESYSTEM=netbsd
+BASEDIR=/yenn-os
+SRCDIR=10-src
+SCRATCH=/yenn-os/scratch
+MAKEJOBS=8
+CPUARCH=x86_64
+MACHARCH=amd64
+KERNCONF=YENN-OS-AMD64
+USERLAND_TARGETS='distribution sets release iso-image'

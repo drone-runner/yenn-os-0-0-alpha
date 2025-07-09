@@ -1,0 +1,10 @@
+#! /bin/bash
+
+echo 'Top every minute...'
+for ((c=5;c>0;c--)); do
+	echo "${c}"
+	sleep 1
+done
+echo 'Run!'
+
+exec top -1ts 57.9

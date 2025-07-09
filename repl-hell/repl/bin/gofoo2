@@ -1,0 +1,8 @@
+#! /bin/sh
+
+echo 'FOO2 USER'
+
+#echo "Disabling foo's networking:"
+sudo /repl/sbin/foo2-tor
+#echo "Actually gone foo."
+exec sudo su - foo2

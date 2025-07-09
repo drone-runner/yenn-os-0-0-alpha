@@ -1,0 +1,5 @@
+#! /bin/sh
+
+echo "Polfan via xShellZ"
+
+exec /usr/bin/sshuttle --dns -r xesxxxpl@shell.xshellz.com 185.243.54.0/23

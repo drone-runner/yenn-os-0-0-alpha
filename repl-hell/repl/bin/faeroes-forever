@@ -1,0 +1,11 @@
+#! /bin/sh
+
+while true
+do
+	ssh dmb@faeroes.sdf.org
+	echo 'Lost connection to faeroes.'
+	sleep 2.5
+	echo 'Reconnecting...'
+	sleep 2.5
+	clear
+done

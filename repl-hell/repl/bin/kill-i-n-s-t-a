@@ -1,0 +1,6 @@
+#! /bin/sh
+echo 'SENDING TERM TO INSTAGRAMPORT'
+sudo su - dmb -c 'pkill instagramport'
+sleep 10
+echo 'SENDING KILL TO INSTAGRAMPORT'
+sudo su - dmb -c 'pkill -9 instagramport'

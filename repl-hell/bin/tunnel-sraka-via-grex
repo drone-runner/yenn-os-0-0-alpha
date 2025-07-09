@@ -1,0 +1,3 @@
+#! /bin/sh
+
+exec sshuttle -r dmb@grex.org 192.166.218.122/32

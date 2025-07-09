@@ -1,0 +1,12 @@
+#! /bin/sh
+PATH=/bin:/usr/bin:/usr/sbin
+{
+	cat <<EOF
+Third Party Software Packages Installed
+======================================================================
+EOF
+	pkg_info | sort
+	cat <<EOF
+======================================================================
+EOF
+} | exec less -d

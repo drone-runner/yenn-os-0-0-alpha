@@ -1,0 +1,3 @@
+#! /bin/sh
+
+exec vim /foo-bialyd-swp/todo-newstyle-public.txt

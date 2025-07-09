@@ -1,0 +1,14 @@
+fnctn () {
+OWN=/usr/sbin/chown
+GRP=/usr/bin/chgrp
+MOD=/bin/chmod
+RM=/bin/rm
+# security
+$MOD o-rx /usr/bin/su
+$GRP adm /usr/bin/su
+$MOD u+s /usr/bin/su
+$MOD o-rx /usr/bin/sudo
+$GRP adm /usr/bin/sudo
+$MOD u+s /usr/bin/sudo
+}
+fnctn 2> /dev/null

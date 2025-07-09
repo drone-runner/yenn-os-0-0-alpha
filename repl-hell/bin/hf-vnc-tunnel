@@ -1,0 +1,10 @@
+#! /bin/sh
+
+/repl/bin/knock-hf
+
+while true
+do
+	echo 'Launching hf VNC tunnel (display :1)...'
+	ssh hf -L 5901:127.0.0.1:5901 -t 'while true; do echo -n .; sleep 1; done'
+	sleep 10
+done

@@ -1,0 +1,10 @@
+#! /bin/sh
+
+#export LANG=en_US.UTF-8
+#export LC_ALL=en_US.UTF-8
+#export LANGUAGE=en
+unset LANG
+unset LANGUAGE
+unset LC_ALL
+
+exec /snap/bin/rtv-lbo.rtv

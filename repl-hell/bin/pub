@@ -1,0 +1,60 @@
+#! /bin/sh
+
+errrc () {
+	echo "You need to setup ~/.pubrc with HOST, DIR, and URL environment variables (without trailing slashes)."
+	exit 1
+}
+
+fail () {
+	echo "Error occured.  Please check above error messages."
+	exit 1
+}
+
+# Pull in config file
+
+. ~/.pubrc || errrc
+
+[ "${HOST}" = "" -o "${DIR}" = "" -o "${URL}" = "" ] && errrc
+
+[ "$#" = 0 -o "$#" -gt 2 ] && { echo "Try `basename ${0}` --usage"; exit 1; }
+
+if [ "$1" = "-h" -o "$1" = "--help" -o "$1" = "--usage" ]; then
+	echo "Usage: `basename ${0}` <file>                   upload file to ${HOST}:${DIR}/"
+	echo "       `basename ${0}` [-r|--remove] <file>     remove a file (dir)"
+	echo "       `basename ${0}` [-l|--list]              list contents"
+	echo "       `basename ${0}` [-h|--help|--usage]      show this help"
+	echo ""
+	echo "File is meant to be publicly accessible."
+	echo "File can also be a directory."
+	exit 1
+fi
+
+if [ "$1" = "-r" -o  "$1" = "--remove" ]; then
+	shift
+	fname="`basename "${1}"`"
+	if [ "${fname}" = "" ]; then
+		echo "No file specified."
+		exit 1
+	fi
+	ssh "${HOST}" rm -Rf "'${DIR}/${fname}'" || fail
+	echo "File (most likely) removed."
+	exit 0
+fi
+
+if [ "$1" = "-l" -o  "$1" = "--list" ]; then
+	echo "Public URLs at ${HOST}:${DIR}/:"
+	ssh "${HOST}" ls -1h "'${DIR}'/" | { while read file; do echo "${URL}/${file}"; done; }
+	exit 0
+fi
+fname="`basename "${1}"`"
+
+scp -rp "${1}" "${HOST}:${DIR}/" || fail
+ssh "${HOST}" chmod 644 "'${DIR}/${fname}'" || fail
+
+sleep 1
+clear
+echo
+echo "Your public file URL:"
+echo
+echo "${URL}/${fname}"
+echo

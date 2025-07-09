@@ -1,0 +1,8 @@
+#! /bin/sh
+
+echo "Connecting to host *life*..."
+while true; do
+	ssh -t life.ulegend.net screen -RD
+	sleep 5
+	echo "Reconnecting..."
+done

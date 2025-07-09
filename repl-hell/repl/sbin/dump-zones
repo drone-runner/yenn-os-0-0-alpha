@@ -1,0 +1,4 @@
+#! /bin/sh
+
+scp -p root@yenn-tmp:/etc/namedb/cache/ulegend.net /dns-zones/
+scp -p root@yenn-tmp:/etc/namedb/cache/bialy.info /dns-zones/

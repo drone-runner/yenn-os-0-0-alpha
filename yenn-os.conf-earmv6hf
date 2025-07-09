@@ -1,0 +1,9 @@
+BASESYSTEM=netbsd
+BASEDIR=/yenn-os
+SRCDIR=9-src
+SCRATCH=/yenn-os/scratch
+MAKEJOBS=8
+CPUARCH=earmv6hf
+MACHARCH=evbarm
+KERNCONF=YENN-OS-RPI
+USERLAND_TARGETS='release iso-image'

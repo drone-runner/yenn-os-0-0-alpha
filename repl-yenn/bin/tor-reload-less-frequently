@@ -1,0 +1,3 @@
+#! /bin/sh
+
+while true; do /repl/bin/tor-newidentity; echo -n .; sleep 61.1; done

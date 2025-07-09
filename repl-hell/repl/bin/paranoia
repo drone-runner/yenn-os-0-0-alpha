@@ -1,0 +1,5 @@
+#! /bin/sh
+
+echo RUNNING ETHERAPE AS ROOT
+#exec /usr/bin/pkexec --disable-internal-agent /usr/bin/etherape
+exec /usr/bin/sudo /usr/bin/etherape

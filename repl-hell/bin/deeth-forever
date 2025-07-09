@@ -1,0 +1,8 @@
+#! /bin/sh
+
+echo "Connecting to deeth.tk..."
+while true; do
+	ssh -t -p 1337 dmb@deeth.tk
+	sleep 5
+	echo "Reconnecting..."
+done

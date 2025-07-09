@@ -1,0 +1,4 @@
+#! /bin/sh
+
+echo "block in from $1 to any" | /sbin/ipf -f -
+echo "${1}" >> /repl/etc/trasher.conf

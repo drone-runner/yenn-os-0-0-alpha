@@ -1,0 +1,13 @@
+#! /bin/sh
+
+unset PATH
+
+while true
+do
+	/bin/clear
+	/usr/bin/ssh yenn-tmp
+	/bin/echo 'Lost connection to yenn.'
+	/bin/sleep 2.5
+	/bin/echo 'Reconnecting...'
+	/bin/sleep 2.5
+done

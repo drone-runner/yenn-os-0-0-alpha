@@ -1,0 +1,10 @@
+#! /bin/sh
+
+echo "Tunnel:"
+echo "+ Polfan"
+echo "+ Polczat"
+echo "+ Chatik"
+echo "+ and IRC in general"
+echo "Via: AWS/EC2.  BEWARE."
+
+exec sshuttle -r foo@of.dmbowsky.eu.org 77.55.208.0/20 185.243.54.0/23 136.243.36.55/32 172.67.68.145/32 104.26.2.189/32 104.26.3.189/32 172.67.161.41/32 104.21.90.204/32 192.166.218.122/32 0.0.0.0/0:6660-7000 0.0.0.0/0:14000-14100

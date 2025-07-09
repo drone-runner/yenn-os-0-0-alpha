@@ -1,0 +1,8 @@
+#! /bin/sh
+
+while true
+do
+	echo 'Going live...'
+	ssh foo@piggy.ulegend.net -L 1935:127.0.0.1:1935 -t 'while true; do echo -n X; sleep 10; done'
+	sleep 5
+done

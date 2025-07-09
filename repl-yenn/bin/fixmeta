@@ -1,0 +1,11 @@
+#!/bin/sh
+
+PATH=/bin:/usr/bin:/usr/pkg/bin
+export PATH
+
+echo 'Fixing /meta directory ownership...'
+
+sudo chgrp -R meta /meta
+sudo chmod -R u+rwX /meta
+sudo chmod -R g+rwX /meta
+sudo chmod -R o+rX /meta

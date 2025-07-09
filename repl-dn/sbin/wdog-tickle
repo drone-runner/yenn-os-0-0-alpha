@@ -1,0 +1,12 @@
+#! /bin/sh
+
+. /repl/etc/wdog.conf
+
+echo 'Tickling watchdog...'
+
+while true
+do
+	/sbin/wdogctl -t
+	echo -n '.'
+	sleep $secs
+done

@@ -1,0 +1,7 @@
+#! /bin/sh
+
+echo -n 'Fixing file modes, it can take a few moments or minutes...'
+
+. /repl/etc/fixchmodrc
+
+echo ' done.'

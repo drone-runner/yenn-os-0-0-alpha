@@ -1,0 +1,8 @@
+#! /bin/sh
+
+. /repl/etc/customdns.conf
+
+if [ "x${IFACE}" = "x${IF}" -o "x${IFACE}" = "x" ]; then
+	eval $ADDROUTE
+	/usr/bin/resolvectl dns "${IF}" "${IFDNS}"
+fi

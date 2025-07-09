@@ -1,0 +1,5 @@
+#! /bin/sh
+
+echo FOO USER
+
+exec sudo su - foo

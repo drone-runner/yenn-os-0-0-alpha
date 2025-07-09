@@ -1,0 +1,11 @@
+#! /bin/sh
+
+for cidr in \
+23.102.140.112/28 \
+13.66.11.96/28 \
+104.210.133.240/28
+do
+	ufw allow out from any to $cidr
+	ip route add $cidr via 192.168.2.6 dev enp3s0
+done
+echo "It should be set up...  Hopefully."

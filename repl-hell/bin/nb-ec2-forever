@@ -1,0 +1,11 @@
+#! /bin/sh
+
+unset PATH
+
+while true
+do
+	/usr/bin/ssh -t bialyd@nb-ec2.ulegend.net /usr/pkg/bin/screen -RD
+	/bin/echo 'Lost connection to nb-ec2.'
+	/bin/sleep 10
+	/bin/echo 'Reconnecting...'
+done

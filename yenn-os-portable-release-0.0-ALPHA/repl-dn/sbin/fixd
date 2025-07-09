@@ -1,0 +1,14 @@
+#! /bin/sh
+chmod o-rwx /dev/*
+chmod o+rx /dev/fd
+chmod o+rw /dev/stdin
+chmod o+rw /dev/stdout
+chmod o+rw /dev/stderr
+chmod o+rw /dev/tty
+chmod o+rw /dev/null
+chmod o+r /dev/zero
+chmod o+r /dev/random
+chmod o+r /dev/urandom
+chmod o+r /dev/crypto
+chmod o+rw /dev/pt*
+chmod o+x /dev/pts

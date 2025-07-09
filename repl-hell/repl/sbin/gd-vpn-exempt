@@ -1,0 +1,23 @@
+#! /bin/sh
+
+echo "Exempting GoDaddy..."
+
+iptables -v -I INPUT -i enp3s0 -s 68.178.252.0/24 -d 0/0 -j ACCEPT
+iptables -v -I INPUT -i enp3s0 -s 173.201.193.0/24 -d 0/0 -j ACCEPT
+iptables -v -I INPUT -i enp3s0 -s 23.32.0.0/11 -d 0/0 -j ACCEPT
+iptables -v -I INPUT -i enp3s0 -s 23.64.0.0/14 -d 0/0 -j ACCEPT
+iptables -v -I INPUT -i enp3s0 -s 208.109.0.0/16 -d 0/0 -j ACCEPT
+
+iptables -v -I OUTPUT -o enp3s0 -s 0/0 -d 68.178.252.0/24 -j ACCEPT
+iptables -v -I OUTPUT -o enp3s0 -s 0/0 -d 173.201.193.0/24 -j ACCEPT
+iptables -v -I OUTPUT -o enp3s0 -s 0/0 -d 23.32.0.0/11 -j ACCEPT
+iptables -v -I OUTPUT -o enp3s0 -s 0/0 -d 23.64.0.0/14 -j ACCEPT
+iptables -v -I OUTPUT -o enp3s0 -s 0/0 -d 208.109.0.0/16 -j ACCEPT
+
+ip route add 68.178.252.0/24 via 192.168.2.6 dev enp3s0
+ip route add 173.201.193.0/24 via 192.168.2.6 dev enp3s0
+ip route add 23.32.0.0/11 via 192.168.2.6 dev enp3s0
+ip route add 23.64.0.0/14 via 192.168.2.6 dev enp3s0
+ip route add 208.109.0.0/16 via 192.168.2.6 dev enp3s0
+
+echo CHECK FOR ERRORS

@@ -1,0 +1,19 @@
+#! /bin/sh
+
+. /repl/etc/backuprc
+
+unset PATH
+umask 027
+
+echo 'MAKING BACKUPS'
+
+cd /b
+
+/bin/rm -f /b/${HOST}-backup.tar
+
+cd /
+
+/usr/bin/tar cpf /b/${HOST}-backup.tar $(/bin/cat /repl/etc/backuplist) && \
+echo 'WELL DONE'
+
+chgrp staff /b/${HOST}-backup.tar

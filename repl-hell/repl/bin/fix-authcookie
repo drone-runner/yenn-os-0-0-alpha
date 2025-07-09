@@ -1,0 +1,3 @@
+#! /bin/sh
+
+sudo chmod o+r /run/tor/control.authcookie

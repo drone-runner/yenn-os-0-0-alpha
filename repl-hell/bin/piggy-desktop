@@ -1,0 +1,8 @@
+#! /bin/sh
+
+while true
+do
+	echo 'SETTING UP VNC TUNNEL'
+	ssh foo@piggy.ulegend.net -L 5901:127.0.0.1:5901 -t 'while true; do echo -n .; sleep 1; done'
+	sleep 10
+done

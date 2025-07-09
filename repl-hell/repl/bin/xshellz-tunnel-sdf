@@ -1,0 +1,5 @@
+#! /bin/sh
+
+echo "Tunnel to XShellz.  Be careful."
+
+exec sshuttle -r dmb@tty.sdf.org 172.67.159.54/32 104.21.49.57/32 198.245.62.27/32

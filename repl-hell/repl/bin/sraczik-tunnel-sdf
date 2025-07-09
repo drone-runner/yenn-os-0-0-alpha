@@ -1,0 +1,6 @@
+#! /bin/sh
+
+echo "Tunel do sraczika via sdf."
+echo "OSTRZEŻENIE: nie zachowuje prywatności."
+
+exec sshuttle -r dmb@tty.sdf.org 172.64.0.0/13 104.16.0.0/12

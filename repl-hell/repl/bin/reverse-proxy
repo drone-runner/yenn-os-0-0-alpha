@@ -1,0 +1,21 @@
+#! /bin/sh
+
+. ${HOME}/.reverse-proxyrc
+
+if [ "xHOST" = "x" -o "xRPORT" = "x" -o "xLPORT" = "x" ]
+then
+	echo "You need to set up ~/.outer-sshrc.  Exiting."
+	exit 1
+fi
+
+PATH=/bin:/usr/bin
+
+while true
+do
+	echo 'STARTING REVERSE PROXY'
+	echo "HOST:  ${HOST}"
+	echo "RPORT: ${RPORT}"
+	echo "LPORT: ${LPORT}"
+	ssh ${HOST} -R ${RPORT}:127.0.0.1:${LPORT} -t 'while true; do echo -n .; sleep 1; done'
+	sleep 10
+done

@@ -1,0 +1,3 @@
+#! /bin/sh
+
+tar cvpJf /scratch/yenn-nb-content.txt /etc/ssh /usr/pkg/etc/letsencrypt /etc/mail /etc/postfix /*czat* /www/ /etc/rndc* /etc/named* /var/chroot/named /usr/pkg/etc/letsencrypt /usr/pkg/etc/nginx /usr/pkg/etc/ngircd*

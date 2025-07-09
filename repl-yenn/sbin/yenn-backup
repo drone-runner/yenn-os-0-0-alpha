@@ -1,0 +1,35 @@
+#!/bin/sh
+
+if [ ! -f /b/MAGIC ]; then
+	mount /b || { echo "Can't mount /b"; exit 1; }
+fi
+umask 0027
+
+if [ "$1" != "" ]
+then
+	level="$1"
+else
+	level="0"
+fi
+
+if [ -f /repl/etc/dumprc -a "$1" = "" ]; then
+	level=`cat /repl/etc/dumprc`
+fi
+
+nb=0
+cd /b && \
+for i in / /usr /var /u; do
+	rm -f /b/yenn-${nb}-${level}-*
+	dump -${level}auX -L "${i}" \
+		-f /b/yenn-${nb}-${level}-`date +%Y%m%d` ${i}
+	nb=`expr ${nb} + 1`
+done
+
+level=`expr ${level} + 1`
+if [ "$level" -eq "3" ]; then
+	level="0"
+fi
+
+echo ${level} > /repl/etc/dumprc
+
+cd / && umount /b

@@ -1,0 +1,6 @@
+#! /bin/sh
+# umount /enc store
+
+umount /enc
+cgdconfig -u cgd1
+vnconfig -u vnd1

@@ -1,0 +1,11 @@
+#! /bin/sh
+
+echo 'Now building... nb-dank custom kernel:'
+
+cd src && \
+	nice -n 20 ./build.sh -T /builds/scrach/dank/tools/ -O /builds/scratch/dank/obj/ -R /builds/scratch/dank/release/ -U -u -j 8 -m i386 -x kernel=/builds/dankmaymay-netbsd-10/NB-DANK && \
+	echo NB-DANK KERNEL BUILD DONE && \
+	exit 0
+
+echo FAILURE
+exit 1

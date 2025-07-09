@@ -1,0 +1,3 @@
+#! /bin/sh
+
+exec ssh -p 10965 frog01.mikr.us

@@ -1,0 +1,3 @@
+#! /bin/sh
+
+exec bmon -o curses:gwidth=200 -o curses:details -o curses:info -o curses:nocolors

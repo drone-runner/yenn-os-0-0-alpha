@@ -1,0 +1,11 @@
+#! /bin/sh
+
+unset PATH
+
+while true
+do
+	/usr/bin/ssh -t bialyd@piggy.ulegend.net /usr/bin/journalctl -ef
+	/bin/echo 'Lost connection to piggy.'
+	/bin/sleep 10
+	/bin/echo 'Reconnecting...'
+done

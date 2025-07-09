@@ -1,0 +1,3 @@
+#! /bin/sh
+
+cat /repl/etc/trasher.conf | { while read line; do echo block in from ${line} to any | /sbin/ipf -f -; done; }

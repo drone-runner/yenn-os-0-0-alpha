@@ -1,0 +1,6 @@
+#! /bin/sh
+
+echo 'Fixing kernel FS modes...'
+chown root:wheel /nb-kernel && \
+	chmod 550 /nb-kernel && \
+	echo 'Done.'

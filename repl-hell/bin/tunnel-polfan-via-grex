@@ -1,0 +1,5 @@
+#! /bin/sh
+
+echo "Polfan via Grex"
+
+exec /usr/bin/sshuttle --dns -r dmb@grex.org 185.243.54.0/23

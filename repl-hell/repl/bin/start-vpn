@@ -1,0 +1,6 @@
+#! /bin/sh
+
+echo 'Starting VPN…'
+
+cd /bialyvpn || exit 1
+exec ./bialyvpn DE

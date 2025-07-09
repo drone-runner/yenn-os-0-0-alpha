@@ -1,0 +1,6 @@
+#! /bin/sh
+while true
+do
+	mpg123 -@ http://s1.slotex.pl:7106/listen.pls?sid=1
+	sleep 5
+done

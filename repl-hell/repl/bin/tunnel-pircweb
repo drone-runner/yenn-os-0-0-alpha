@@ -1,0 +1,5 @@
+#! /bin/sh
+
+echo "Tunel pod bramkę pirc.pl. Może powodować wyciekanie adresu. OSTROŻNIE."
+
+exec /usr/bin/sshuttle --python=/usr/local/bin/python --dns -r dmb@grex.org 94.23.91.162/32 5.135.206.146/32 188.165.16.178/32 0/0:80 0/0:443

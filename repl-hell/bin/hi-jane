@@ -1,0 +1,5 @@
+#! /bin/sh
+
+echo '>>> Say "hi" 😜'
+exec sudo docker exec -it ollama ollama run llama2
+#exec sudo docker exec -it ollama ollama run wizard-vicuna-uncensored

@@ -1,0 +1,13 @@
+#! /bin/sh
+
+cd /builds/darkness-netbsd-10 || { echo "Fail to chdir."; exit 2; }
+
+echo 'Rebuilding DARKNESS:'
+
+cd src && \
+	nice -n 20 ./build.sh -T /builds/scratch/darkness-netbsd-10/tools/ -O /builds/scratch/darkness-netbsd-10/obj/ -R /builds/scratch/darkness-netbsd-10/release/ \
+		-U -j 8 -a earmv7hf -m evbarm -x tools kernel=/builds/darkness-netbsd-10/DARKNESS && \
+	exit 0
+
+echo FAILURE
+exit 1

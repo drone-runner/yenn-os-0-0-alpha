@@ -1,0 +1,5 @@
+#! /bin/sh
+service tor onestart
+service httpd onestart
+service tor onestatus
+service httpd onestatus

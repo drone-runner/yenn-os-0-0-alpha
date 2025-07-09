@@ -1,0 +1,22 @@
+#! /bin/sh
+
+echo "Let's get rid of bulshit hosts and networks!"
+echo 'Copying config file…'
+echo '→ holdfast'
+scp /repl/etc/bs-hosts.conf hf:/repl/etc/bs-hosts.conf
+#echo '→ fishy'
+#scp -P55555 /repl/etc/bs-hosts.conf fishy:/repl/etc/bs-hosts.conf
+echo '→ hrum'
+scp -P55555 /repl/etc/bs-hosts.conf hrum:/repl/etc/bs-hosts.conf
+
+echo "Now reloading bulshit hosts…"
+echo '→ holdfast'
+ssh hf /repl/bin/reload-bs-hosts
+#echo '→ fishy'
+#ssh -p55555 fishy /repl/bin/reload-bs-hosts
+#echo '→ yenn'
+#/repl/bin/reload-bs-hosts
+echo '→ hrum'
+ssh -p55555 hrum /repl/bin/reload-bs-hosts
+
+echo "Should be done."

@@ -1,0 +1,3 @@
+#! /bin/sh
+
+exec rsync -a --rsh=ssh root@fishy.ulegend.net:/bind-chroot/etc/namedb/bialy.info root@fishy.ulegend.net:/bind-chroot/etc/namedb/ulegend.net /home/bialyd/Dropbox/pub/DNS-zones/

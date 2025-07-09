@@ -1,0 +1,8 @@
+#! /bin/sh
+
+echo "Host >>happy<<..."
+while true; do
+	ssh -t 34.192.137.150 screen -RD
+	sleep 5
+	echo "Reconnecting..."
+done

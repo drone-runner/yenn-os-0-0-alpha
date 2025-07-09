@@ -1,0 +1,13 @@
+#! /bin/sh
+
+echo -n 'Reloading bs-hosts...'
+
+PATH="/sbin:/bin:/usr/sbin:/usr/bin"
+pfctl -t bs-hosts -T flush 2>/dev/null || exit 1
+cat /repl/etc/bs-hosts.conf | {
+        while read foo; do
+                pfctl -t bs-hosts -T add $foo 2>/dev/null
+		echo -n .
+        done
+}
+echo ...done.

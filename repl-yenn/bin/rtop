@@ -1,0 +1,3 @@
+#! /bin/sh
+
+exec sudo top -1ts.1

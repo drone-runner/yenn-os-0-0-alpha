@@ -1,0 +1,12 @@
+#! /bin/sh
+PATH=/repl/bin:/bin:/usr/bin
+export PATH
+echo `hostname` uptime:
+echo
+uptime
+echo
+cat <<EOF
+No news is good news.
+EOF
+echo
+fingerprints
