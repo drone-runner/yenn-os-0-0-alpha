@@ -273,7 +273,7 @@ options 	WSEMUL_VT100		# VT100 / VT220 emulation
 #options 	WSEMUL_DEFAULT="\"vt100\""  # NB: default is "sun" if enabled
 # different kernel output - see dev/wscons/wsdisplayvar.h
 options 	WSDISPLAY_CUSTOM_OUTPUT	# color customization from wsconsctl(8)
-options 	WS_KERNEL_FG=WSCOL_RED
+options 	WS_KERNEL_FG=WSCOL_MAGENTA
 #options 	WS_KERNEL_BG=WSCOL_BLACK
 # customization of console border color
 options 	WSDISPLAY_CUSTOM_BORDER	# custom border colors via wsconsctl(8)
