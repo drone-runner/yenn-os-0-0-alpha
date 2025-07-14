@@ -1,0 +1,9 @@
+BASESYSTEM=netbsd
+BASEDIR=/yenn-os-0-0-alpha
+SRCDIR=10-src
+SCRATCH=/yenn-os-0-0-alpha/scratch
+MAKEJOBS=8
+CPUARCH=i386
+MACHARCH=i386
+KERNCONF=YENN-OS-X86-32
+USERLAND_TARGETS='distribution sets'
