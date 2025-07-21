@@ -27,7 +27,7 @@ ident		"yenn-OS 0.0-Alpha"
 maxusers	64		# estimated number of users
 
 # delay between "rebooting ..." message and hardware reset, in milliseconds
-options 	CPURESET_DELAY=12000
+options 	CPURESET_DELAY=8000
 
 # This option allows you to force a serial console at the specified
 # I/O address.   see console(4) for details.

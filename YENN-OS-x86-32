@@ -58,7 +58,7 @@ options 	MTRR		# memory-type range register syscall support
 options 	MULTIBOOT	# Multiboot support (see multiboot(8))
 
 # delay between "rebooting ..." message and hardware reset, in milliseconds
-#options 	CPURESET_DELAY=2000
+options 	CPURESET_DELAY=8000
 
 # This option allows you to force a serial console at the specified
 # I/O address.   see console(4) for details.
@@ -224,8 +224,8 @@ options 	NFS_BOOT_DHCP,NFS_BOOT_BOOTPARAM
 options 	WSEMUL_VT100		# VT100 / VT220 emulation
 # customization of console and kernel output - see dev/wscons/wsdisplayvar.h
 options 	WSDISPLAY_CUSTOM_OUTPUT	# color customization from wsconsctl(8)
-options 	WS_DEFAULT_FG=WSCOL_MAGENTA
-options 	WS_DEFAULT_BG=WSCOL_BLUE
+options 	WS_DEFAULT_FG=WSCOL_BLACK
+options 	WS_DEFAULT_BG=WSCOL_WHITE
 #options 	WS_DEFAULT_COLATTR="(0)"
 #options 	WS_DEFAULT_MONOATTR="(0)"
 #XXXoptions 	WS_KERNEL_FG=WSCOL_ORANGE
@@ -234,7 +234,7 @@ options 	WS_DEFAULT_BG=WSCOL_BLUE
 #options 	WS_KERNEL_MONOATTR=""
 # customization of console border color
 options 	WSDISPLAY_CUSTOM_BORDER	# custom border colors via wsconsctl(8)
-#options 	WSDISPLAY_BORDER_COLOR=WSCOL_BLUE	# default color
+options 	WSDISPLAY_BORDER_COLOR=WSCOL_WHITE	# default color
 # compatibility to other console drivers
 options 	WSDISPLAY_COMPAT_PCVT		# emulate some ioctls
 options 	WSDISPLAY_COMPAT_SYSCONS	# emulate some ioctls
