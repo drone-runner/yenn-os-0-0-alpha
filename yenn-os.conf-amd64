@@ -1,7 +1,7 @@
 BASESYSTEM=netbsd
 BASEDIR=/yenn-os-0-0-alpha
-SRCDIR=current-src
-SCRATCH=/yenn-os-0-0-alpha/scratch
+SRCDIR=/netbsd-current/src
+SCRATCH=/scratch
 MAKEJOBS=8
 CPUARCH=x86_64
 MACHARCH=amd64
